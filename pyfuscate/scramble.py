@@ -63,22 +63,10 @@ def scramble(text: str):
     return astunparse.unparse(parsed)
 
 
-code = """
-
-from discord.ext import commands
-
-
-bot = commands.Bot(command_prefix="!")
-
-@bot.command()
-async def test(ctx):
-    await ctx.send("ok")
-
-bot.run("token")
-
-"""
-
 if __name__ == '__main__':
+    with open('scramble.py', 'r') as fp:
+        code = fp.read()
+    scrambled = scramble(code)
     with open("fuck.py", "w") as fp:
-        fp.write(scramble(code))
+        fp.write(scrambled)
 
